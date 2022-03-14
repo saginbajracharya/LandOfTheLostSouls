@@ -68,7 +68,7 @@ class _MenuPageState extends State<MenuPage> {
                         ),
                       ),
                       onPressed: (){
-                        Navigator.of(context).pushNamed('/level');
+                        Navigator.of(context).pushNamed('/levelSelect');
                       }, 
                     ),
                     const SizedBox(height: 10.0),

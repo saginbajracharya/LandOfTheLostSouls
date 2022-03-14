@@ -5,7 +5,7 @@ import 'package:land_of_the_lost_souls/src/menu.dart';
 import 'package:land_of_the_lost_souls/src/splash.dart';
 
 import 'level/level1.dart';
-import 'level/level.dart';
+import 'level_select.dart';
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
 
@@ -69,8 +69,8 @@ class MyApp extends StatelessWidget {
                     return const SplashScreen();
                   case '/menu':
                     return const MenuPage();
-                  case '/level':
-                    return const Level();
+                  case '/levelSelect':
+                    return const LevelSelect();
                   case '/settings':
                     return SettingsView(controller: settingsController);
                   case '/level1':

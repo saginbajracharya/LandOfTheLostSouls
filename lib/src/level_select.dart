@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'sample_item.dart';
+import 'level/sample_item.dart';
 
 /// Displays a list of SampleItems.
-class Level extends StatelessWidget {
-  const Level({
+class LevelSelect extends StatelessWidget {
+  const LevelSelect({
     Key? key,
     this.items = const [
       SampleItem(1), 
@@ -39,7 +39,7 @@ class Level extends StatelessWidget {
     ],
   }) : super(key: key);
 
-  static const routeName = '/level';
+  static const routeName = '/levelSelect';
 
   final List<SampleItem> items;
 
@@ -54,7 +54,7 @@ class Level extends StatelessWidget {
         title: const Text(''),
       ),
       body: ListView.builder(
-        restorationId: 'level',
+        restorationId: 'levelSelect',
         itemCount: items.length,
         itemBuilder: (BuildContext context, int index) {
           final item = items[index];
