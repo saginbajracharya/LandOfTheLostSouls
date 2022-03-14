@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:land_of_the_lost_souls/src/styles.dart';
 
 class SplashScreen extends StatefulWidget{
   const SplashScreen({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _SplashScreen extends State<SplashScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: primaryColor,
       body:Container(
         alignment: Alignment.center,
         child:Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'level/sample_item.dart';
+import 'styles.dart';
 
 /// Displays a list of SampleItems.
 class LevelSelect extends StatelessWidget {
@@ -46,7 +47,7 @@ class LevelSelect extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: primaryColor,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         elevation: 0.0,

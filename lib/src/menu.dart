@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:audioplayers/audioplayers.dart';
 
+import 'styles.dart';
+
 class MenuPage extends StatefulWidget {
   const MenuPage({ Key? key }) : super(key: key);
 
@@ -15,13 +17,10 @@ class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
-      body: Container(
+      backgroundColor: primaryColor,
+      body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
-          color: Colors.blueGrey,
-        ),
         child: Padding(
           padding: const EdgeInsets.all(50.0),
           child: Column(

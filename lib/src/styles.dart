@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+
+const primaryColor = Color.fromARGB(255, 126, 8, 34);
+const buttonPrimaryColor = Color(0xFF26a69a);
+const buttonDisableColor = Color(0xFFe0e0e0);
+const catTitleyColor = Color(0xFF333333);
+const blogCountTextColor = Color.fromARGB(255, 48, 143, 87);
+const activityDivider = Color(0xFFd4d9db);
+const pagesAppbar = Color(0xFFF5F5F5);
+const textColor1 = Color(0xFF4f4f4f);
+const accountTextColor = Color(0xFF9C9C9C);
+const borderWrapper = Color(0xFFffd600);
+const formAnyConatiner = Color(0xFF3e4958);
+const white = Colors.white;
+const black = Colors.black;
+const grey = Colors.grey;
+const red = Colors.red;
+const lightgrey = Color(0xFFD3D3D3);
+const transparent = Colors.transparent;
+const buttonLightColor = Color(0xFF5cd4d4);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:land_of_the_lost_souls/src/styles.dart';
 
 class Level1 extends StatefulWidget {
   const Level1({ Key? key }) : super(key: key);
@@ -39,7 +40,7 @@ class _Level1State extends State<Level1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: primaryColor,
       extendBodyBehindAppBar: false,
       appBar: AppBar(
         elevation: 0.0,
