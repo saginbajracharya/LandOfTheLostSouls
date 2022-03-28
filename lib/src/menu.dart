@@ -1,5 +1,7 @@
 import 'dart:io';
+import 'dart:typed_data';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:audioplayers/audioplayers.dart';
@@ -14,6 +16,30 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+  AudioPlayer player = AudioPlayer();
+  String audioasset = "assets/audio/rock.MP3";
+
+  @override
+  void initState() {
+    super.initState();
+    playAudio();
+  }
+
+  playAudio() async{
+    ByteData bytes = await rootBundle.load(audioasset); //load sound from assets
+    Uint8List  soundbytes = bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
+    int result = await player.playBytes(soundbytes);
+    if(result == 1){ //play success
+      if (kDebugMode) {
+        print("Sound playing successful.");
+      }
+    }else{
+      if (kDebugMode) {
+        print("Error while playing sound.");
+      } 
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,6 +93,7 @@ class _MenuPageState extends State<MenuPage> {
                         ),
                       ),
                       onPressed: (){
+                        player.stop();
                         Navigator.of(context).pushNamed('/levelSelect');
                       }, 
                     ),
@@ -111,6 +138,7 @@ class _MenuPageState extends State<MenuPage> {
                         ),
                       ),
                       onPressed: (){
+                        player.stop();
                         if (Platform.isAndroid) {
                           SystemNavigator.pop();
                         } else if (Platform.isIOS) {

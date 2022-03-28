@@ -1,6 +1,8 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:land_of_the_lost_souls/src/level/my_game.dart';
 import 'package:land_of_the_lost_souls/src/menu.dart';
 import 'package:land_of_the_lost_souls/src/splash.dart';
 
@@ -75,6 +77,10 @@ class MyApp extends StatelessWidget {
                     return SettingsView(controller: settingsController);
                   case '/level1':
                     return const Level1();
+                  case '/game':
+                    return GameWidget(
+                      game: MyGame(),
+                    );
                   default:
                     return _errorRoute();
                 }

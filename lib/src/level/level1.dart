@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:land_of_the_lost_souls/src/level/selectable_item.dart';
+import 'package:land_of_the_lost_souls/src/level/selection_app_bar.dart';
 import 'package:land_of_the_lost_souls/src/styles.dart';
+import 'package:drag_select_grid_view/drag_select_grid_view.dart';
 
 class Level1 extends StatefulWidget {
   const Level1({ Key? key }) : super(key: key);
@@ -9,6 +12,7 @@ class Level1 extends StatefulWidget {
 }
 
 class _Level1State extends State<Level1> {
+  final controller = DragSelectGridViewController();
   List items = [
     'A',
     'B',
@@ -37,60 +41,47 @@ class _Level1State extends State<Level1> {
     'Y',
     'Z'
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    controller.addListener(scheduleRebuild);
+  }
+
+  @override
+  void dispose() {
+    controller.removeListener(scheduleRebuild);
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
       extendBodyBehindAppBar: false,
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor:Colors.transparent,
-        centerTitle: true,
+      appBar: SelectionAppBar(
+        selection: controller.value, 
       ),
-      body: Column(
-        children: [
-          const Divider(
-            color: Colors.black,
-            thickness: 2,
-          ),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 80,
-              childAspectRatio: 3 / 2,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8
-            ),
-            itemCount: items.length,
-            itemBuilder: (BuildContext ctx, index) {
-              return GestureDetector(
-                onTap: () {
-                  
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    items[index],
-                    style: const TextStyle(
-                      fontSize: 40.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.lightBlue,
-                    borderRadius: BorderRadius.circular(15)
-                  ),
-                ),
-              );
-            }
-          ),
-          const Divider(
-            color: Colors.black,
-            thickness: 2,
-          ),
-        ],
+      body: DragSelectGridView(
+        gridController: controller,
+        padding: const EdgeInsets.all(8),
+        itemCount: items.length,
+        itemBuilder: (context, index, selected) {
+          return SelectableItem(
+            index: index,
+            color: Colors.blue,
+            selected: selected, 
+            word: items[index],
+          );
+        },
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 100,
+          crossAxisSpacing: 8,
+          mainAxisSpacing: 8,
+        ),
       ),
     );
   }
+
+  void scheduleRebuild() => setState(() {});
 }

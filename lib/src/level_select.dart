@@ -76,7 +76,11 @@ class LevelSelect extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  Navigator.of(context).pushNamed('/level1');
+                  if(index == 1){
+                    Navigator.of(context).pushNamed('/game');  
+                  }else{
+                    Navigator.of(context).pushNamed('/level1');
+                  }
                 }
               ),
             ),

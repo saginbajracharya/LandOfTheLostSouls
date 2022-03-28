@@ -1,4 +1,9 @@
+import 'dart:typed_data';
+
+import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:land_of_the_lost_souls/src/styles.dart';
 
 class SplashScreen extends StatefulWidget{
@@ -12,14 +17,32 @@ class SplashScreen extends StatefulWidget{
 
 class _SplashScreen extends State<SplashScreen>{
   int splashtime = 3; 
-  // duration of splash screen on second
+  AudioPlayer player = AudioPlayer();
+  String audioasset = "assets/audio/shrot_1.MP3";
 
   @override
-  void initState() {
+  initState() {
+    playAudio();
     Future.delayed(Duration(seconds: splashtime), () async {
+      player.stop();
       Navigator.of(context).pushNamed('/menu');
     }); 
     super.initState();
+  }
+  
+  playAudio()async{
+    ByteData bytes = await rootBundle.load(audioasset); //load sound from assets
+    Uint8List  soundbytes = bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
+    int result = await player.playBytes(soundbytes);
+    if(result == 1){ //play success
+        if (kDebugMode) {
+          print("Sound playing successful.");
+        }
+    }else{
+        if (kDebugMode) {
+          print("Error while playing sound.");
+        } 
+    }
   }
 
   @override
