@@ -43,7 +43,7 @@ class SelectionAppBar extends StatelessWidget implements PreferredSizeWidget {
         key: const Key('selecting'),
         titleSpacing: 0,
         leading: const CloseButton(),
-        title: Text('${selection.amount}'),
+        title: const Text(/* '${selection.amount}' */''),
         elevation: 0.0,
         backgroundColor:Colors.transparent,
         centerTitle: true,

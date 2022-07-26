@@ -19,6 +19,8 @@
 // SOFTWARE.
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:land_of_the_lost_souls/src/controller/level_controller.dart';
 
 class SelectableItem extends StatefulWidget {
   const SelectableItem({
@@ -39,6 +41,7 @@ class SelectableItem extends StatefulWidget {
 }
 
 class _SelectableItemState extends State<SelectableItem> with SingleTickerProviderStateMixin {
+  final LevelController levelCon = Get.put(LevelController());
   late final AnimationController _controller;
   late final Animation<double> _scaleAnimation;
 
@@ -99,7 +102,11 @@ class _SelectableItemState extends State<SelectableItem> with SingleTickerProvid
         child: Text(
           widget.word,
           textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 18, color: Colors.white),
+          style: const TextStyle(
+            fontSize: 30, 
+            color: Colors.white,
+            fontWeight: FontWeight.bold
+          ),
         ),
       ),
     );
