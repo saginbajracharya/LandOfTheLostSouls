@@ -22,7 +22,7 @@ class _MenuPageState extends State<MenuPage> {
   @override
   void initState() {
     super.initState();
-    playAudio();
+    playAudio();//audio start
   }
 
   playAudio() async{
